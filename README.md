@@ -7,4 +7,4 @@ Además del fichero en python se ha añadido el notebook de Jupyter
 
 ## IPython Notebooks:
 
-* [Comp_multispecies_ABM_model.ipynb](http://nbviewer.ipython.org/github/galeanojav/LV_5species/Comp_multispecies_ABM_model.ipynb)
+* [Comp_multispecies_ABM_model.ipynb](https://github.com/galeanojav/LV_5species/Comp_multispecies_ABM_model.ipynb)
