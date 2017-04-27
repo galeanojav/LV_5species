@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on June:08  2016
+Updated on April:27 2017
 
 @author: javiergaleano
 """
@@ -12,6 +13,7 @@ from pylab import *
 import copy as cp
 
 
+plt.style.use('bmh')
 
 ## Parameters and initial conditions
 
@@ -20,20 +22,20 @@ num_agents = 5000
 #Prays
 
 #Pseudomonas
-r_init = int(0.40*num_agents) # initial Pseudomonas population
+r_init = int(0.70*num_agents) # initial Pseudomonas population
 nr = r_init*2. # carrying capacity of Pseudomonas
 mr = 0.03 # magnitude of movement of Pseudomonas
 dr = 1.0 # death rate of Pseudomonas when it faces Predators 
 rr = 0.2 # reproduction rate of Pseudomonas
 
 #Staphylococcus
-ra_init = int(0.40*num_agents) # initial Staphylococcus population
+ra_init = int(0.20*num_agents) # initial Staphylococcus population
 nra = ra_init*2. # carrying capacity of Staphylococcus
 dra = 1.0 # death rate of Staphylococcus when it faces Predators 
 rra = 0.2 # reproduction rate of Staphylococcus
 
 #Haemophilus
-h_init =int(0.1*num_agents) # initial Haemophilus population
+h_init =int(0.05*num_agents) # initial Haemophilus population
 nh = h_init*2. # carrying capacity of Haemophilus
 dh = 1.0 # death rate of Haemophilus when it faces Predators 
 rh = 0.2 # reproduction rate of Haemophilus
@@ -41,14 +43,14 @@ rh = 0.2 # reproduction rate of Haemophilus
 ### Predators
 
 #Bdellovibrio
-f_init = int(.08*num_agents) # initial Bdellovibrio population
+f_init = int(.04*num_agents) # initial Bdellovibrio population
 mf = 0.05 # magnitude of movement of Bdellovibrio
 df = 0.05 # death rate of Bdellovibrio when there is no food 
 rf = 0.1 # reproduction rate of Bdellovibrio
 
 
 #Vampirovibrio
-w_init = int(.02*num_agents) # initial Vampirovibrio population
+w_init = int(.01*num_agents) # initial Vampirovibrio population
 mw = 0.05 # magnitude of movement of Vampirovibrio
 dw = 0.05 # death rate of Vampirovibrio when there is no food 
 rw = 0.1 # reproduction rate of Vampirovibrio
@@ -91,6 +93,9 @@ def initialize():
         ag.x = random()
         ag.y = random()
         agents.append(ag)
+
+# Plotting functions
+# Drawing spatially distributed the predators and preys
 
 
 def draw_space():
@@ -268,16 +273,36 @@ def evolt():
     wdata.append(len(wolves))
     
     
+# main program 
+
+Tstep = 2000
 
 initialize()
+
 draw_space()
-savefig('2pred(0p8+0p02)_vs_3pray(40_40)_ic_2000.png')
-for p in xrange(2000):
+savefig('2pred(0p04+0p01)_vs_3pray(70_20)_init_2000.png')
+
+for p in range(Tstep):
     update_one_unit_time()
     evolt()
+
+    if p == (Tstep/2):
+        draw_space()
+        savefig('2pred(0p04+0p01)_vs_3pray(70_20)_med_2000.png')
+
+
+
+f_out = open('2pred(0p04+0p01)_vs_3pray(70_20)_evol_5000.txt','w')
+for j in xrange(len(rdata)):
+    f_out.write(str(j) + '\t' + str(rdata[j]) + '\t' + str(radata[j]) + '\t'+ str(hdata[j]) + '\t' + str(fdata[j]) + '\t' + str(wdata[j]) + '\n')
+
+f_out.close()
+
+
 clf()
 draw_evol2()
-savefig('2pred(0p08+0p02)_vs_3pray(40_40)_evol_2000.png')
+savefig('2pred(0p04+0p01)_vs_3pray(70_20)_evol_2000.png')
 clf()
 draw_space()
-savefig('2pred(0p08+0p02)_vs_3pray(40_40)_end_2000.png')
+savefig('2pred(0p04+0p01)_vs_3pray(70_20)_end_2000.png')
+
