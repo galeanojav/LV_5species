@@ -75,7 +75,7 @@ def initialize():
     fdata = []
     wdata = []
     
-    for i in xrange(num_agents):
+    for i in range(num_agents):
         
         ag = agent()
         
@@ -154,11 +154,11 @@ def draw_space():
 def draw_evol2():
     global agents, rdata, radata, hdata, wdata, fdata
 
-    plot(rdata,'b',label = 'Pseudomo')
-    plot(radata,'g',label = 'Staphylo')
-    plot(hdata,'c',label = 'Haemo')
-    plot(fdata,'r',label = 'Bdello')
-    plot(wdata,'y',label = 'Vampiro')
+    plot(rdata,'b',label = '$\it{P. aeruginosa}$')
+    plot(radata,'g',label = '$\it{S. aureus}$')
+    plot(hdata,'c',label = '$\it{H. influenzae}$')
+    plot(fdata,'r',label = '$\it{Bdellovibrio}$')
+    plot(wdata,'y',label = '$\it{Vampirovibrio}$')
     legend()
     
 # Updating the interaction of the agents
@@ -275,12 +275,12 @@ def evolt():
     
 # main program 
 
-Tstep = 2000
+Tstep = 5000
 
 initialize()
 
 draw_space()
-savefig('2pred(0p04+0p01)_vs_3pray(70_20)_init_2000.png')
+savefig('2pred(0p04+0p01)_vs_3pray(70_20)_init_5000.png')
 
 for p in range(Tstep):
     update_one_unit_time()
@@ -288,12 +288,12 @@ for p in range(Tstep):
 
     if p == (Tstep/2):
         draw_space()
-        savefig('2pred(0p04+0p01)_vs_3pray(70_20)_med_2000.png')
+        savefig('2pred(0p04+0p01)_vs_3pray(70_20)_med_5000.png')
 
 
 
 f_out = open('2pred(0p04+0p01)_vs_3pray(70_20)_evol_5000.txt','w')
-for j in xrange(len(rdata)):
+for j in range(len(rdata)):
     f_out.write(str(j) + '\t' + str(rdata[j]) + '\t' + str(radata[j]) + '\t'+ str(hdata[j]) + '\t' + str(fdata[j]) + '\t' + str(wdata[j]) + '\n')
 
 f_out.close()
@@ -301,8 +301,8 @@ f_out.close()
 
 clf()
 draw_evol2()
-savefig('2pred(0p04+0p01)_vs_3pray(70_20)_evol_2000.png')
+savefig('2pred(0p04+0p01)_vs_3pray(70_20)_evol_5000.png')
 clf()
 draw_space()
-savefig('2pred(0p04+0p01)_vs_3pray(70_20)_end_2000.png')
+savefig('2pred(0p04+0p01)_vs_3pray(70_20)_end_5000.png')
 
