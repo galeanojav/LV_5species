@@ -1,9 +1,9 @@
 # LV_5species
-AB model for 5 species in a Lotka-Volterra model.
 
-Este es un proyecto para generar un modelo basado en agentes para competición de 5 especies (2 depredadores y 3 presas)
+Lotka-volterra model using a Agent-Based Model with 5 different species (3 preys - 2 predators)
 
-Además del fichero en python se ha añadido el notebook de Jupyter
+We have the python file and the notebook.
+
 
 ## IPython Notebooks:
 
