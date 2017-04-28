@@ -159,6 +159,8 @@ def draw_evol2():
     plot(hdata,'c',label = '$\it{H. influenzae}$')
     plot(fdata,'r',label = '$\it{Bdellovibrio}$')
     plot(wdata,'y',label = '$\it{Vampirovibrio}$')
+    xlabel('Evolution time (a.u.)')
+    ylabel('Population size')
     legend()
     
 # Updating the interaction of the agents
